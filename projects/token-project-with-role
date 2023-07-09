@@ -1,0 +1,7 @@
+# Example Argo CD Token Generation
+[kgigiano@devbox argocd-example-apps]$ argocd proj role create-token project-with-role ci-role
+Create token succeeded for proj:project-with-role:ci-role.
+  ID: b96a4d58-373e-44f2-bb4a-21cdc293d626
+  Issued At: 2023-07-07T10:40:49-06:00
+  Expires At: Never
+  Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJwcm9qOnByb2plY3Qtd2l0aC1yb2xlOmNpLXJvbGUiLCJuYmYiOjE2ODg3NDgwNDksImlhdCI6MTY4ODc0ODA0OSwianRpIjoiYjk2YTRkNTgtMzczZS00NGYyLWJiNGEtMjFjZGMyOTNkNjI2In0.rIdzyvVJ_dS4Vs28wJ7FNn6oHkw_p8fwGSKIgIuhnsI

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: webapp-review
+  namespace: argocd
+spec:
+  generators:
+  - pullRequest:
+      github: 
+        owner: kevingigiano
+        repo: argocd-course-webapp
+        labels:
+        - preview
+      requeueAfterSeconds: 60
+  template:
+    metadata:
+      name: 'webapp-{{branch}}-{{number}}'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/kevingigiano/argocd-course-webapp.git
+        targetRevision: '{{head_sha}}'
+        path: helm/webapp
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: webapp-{{branch}}-{{number}}
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

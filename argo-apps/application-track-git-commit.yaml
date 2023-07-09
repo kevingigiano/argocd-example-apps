@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: track-git-commit
+  namespace: argocd
+spec:
+  destination:
+    namespace: track-git-commit
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: guestbook
+    repoURL: "https://github.com/kevingigiano/argocd-example-apps.git"
+    targetRevision: 9c752f5
+    directory:
+      recurse: true
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
